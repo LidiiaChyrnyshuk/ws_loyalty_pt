@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.loyalty_page_wrapper html,
+			a,
+			abbr,
+			acronym,
+			address,
+			applet,
+			article,
+			aside,
+			audio,
+			b,
+			big,
+			blockquote,
+			body,
+			canvas,
+			caption,
+			center,
+			cite,
+			code,
+			dd,
+			del,
+			details,
+			dfn,
+			div,
+			dl,
+			dt,
+			em,
+			embed,
+			fieldset,
+			figcaption,
+			figure,
+			footer,
+			form,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			header,
+			hgroup,
+			i,
+			iframe,
+			img,
+			ins,
+			kbd,
+			label,
+			legend,
+			li,
+			mark,
+			menu,
+			nav,
+			object,
+			ol,
+			output,
+			p,
+			pre,
+			q,
+			ruby,
+			s,
+			samp,
+			section,
+			small,
+			span,
+			strike,
+			strong,
+			sub,
+			summary,
+			sup,
+			table,
+			tbody,
+			td,
+			tfoot,
+			th,
+			thead,
+			time,
+			tr,
+			tt,
+			u,
+			ul,
+			var,
+			video {
+				border: 0;
+				font: inherit;
+				margin: 0;
+				padding: 0;
+				vertical-align: baseline;
+			}
+			.loyalty_page_wrapper article,
+			aside,
+			details,
+			figcaption,
+			figure,
+			footer,
+			header,
+			hgroup,
+			menu,
+			nav,
+			section {
+				display: block;
+			}
+			body {
+				line-height: 1;
+			}
+			.loyalty_page_wrapper ol,
+			ul {
+				list-style: none !important;
+			}
+			blockquote,
+			q {
+				quotes: none;
+			}
+			blockquote:after,
+			blockquote:before,
+			q:after,
+			q:before {
+				content: "";
+			}
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+			input,
+			select,
+			textarea {
+				color: inherit;
+				font-family: inherit;
+				font-size: inherit;
+			}
+			input:-webkit-autofill,
+			input:-webkit-autofill:focus,
+			input:-webkit-autofill:hover,
+			select:-webkit-autofill,
+			select:-webkit-autofill:focus,
+			select:-webkit-autofill:hover,
+			textarea:-webkit-autofill,
+			textarea:-webkit-autofill:focus,
+			textarea:-webkit-autofill:hover {
+				-webkit-text-fill-color: #393939;
+				-webkit-box-shadow: inset 0 0 0 1000px transparent;
+				-webkit-transition: background-color 5000s ease-in-out 0s;
+				transition: background-color 5000s ease-in-out 0s;
+			}
+			input[type="number"]::-webkit-inner-spin-button,
+			input[type="number"]::-webkit-outer-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+			.loyalty_page_wrapper a {
+				outline: none;
+				text-decoration: none !important;
+			}
+			img,
+			video {
+				height: auto;
+				max-width: 100%;
+			}
+			* {
+				-webkit-tap-highlight-color: transparent;
+			}
+			*,
+			:after,
+			:before {
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			:focus {
+				outline: none;
+			}
+			img {
+				display: block;
+			}
+			:root {
+				--whiteColor: #ffffff;
+				--blackColor: #000000;
+				--lilaColor: #6352ff;
+				--darkLilaColor: #584ed4;
+				--greyLightColor: #f1f3f5;
+				--greyColor: #4f606f;
+				--greyDarkColor: #34414d;
+			}
+			html {
+				height: 100%;
+			}
+			.loyalty_page_wrapper {
+				background-color: var(--whiteColor) !important;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				min-height: 100%;
+				overflow: hidden;
+				position: relative;
+				width: 100%;
+			}
+			.loyalty_page_container {
+				margin: 0 auto;
+				max-width: 960px;
+				width: 100%;
+			}
+			@media (max-width: 959px) {
+				.loyalty_page_container {
+					max-width: 500px;
+				}
+			}
+			@media (max-width: 500px) {
+				.loyalty_page_container {
+					max-width: 100%;
+				}
+			}
+			button {
+				background: none;
+				border: none;
+				color: inherit;
+				cursor: pointer;
+				font: inherit;
+				margin: 0;
+				padding: 0;
+			}
+			@font-face {
+				font-display: swap;
+				font-family: Stolzl;
+				font-style: normal;
+				font-weight: 400;
+				src: url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Regular.woff2)
+						format("woff2"),
+					url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Regular.woff)
+						format("woff");
+			}
+			@font-face {
+				font-display: swap;
+				font-family: Stolzl;
+				font-style: normal;
+				font-weight: 500;
+				src: url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Medium.woff2)
+						format("woff2"),
+					url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Medium.woff)
+						format("woff");
+			}
+			.loyalty_page_main {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 16px;
+			}
+			@media (min-width: 960px) {
+				.loyalty_page_main {
+					gap: 24px;
+				}
+			}
+			/* ----- hero ---- */
+			.loyalty_page_hero {
+				width: 100%;
+			}
+			.loyalty_page_hero_title {
+				display: inline-flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				gap: 8px;
+				margin: 0 0 12px 0;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_hero_title {
+					margin: 0 0 16px 0;
+				}
+			}
+			.loyalty_page_hero_title_text {
+				display: inline-flex;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 16px;
+				line-height: 100%;
+				font-weight: 500 !important;
+				color: var(--greyDarkColor) !important;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_hero_title_text {
+					font-size: 20px;
+					line-height: 24px;
+				}
+			}
+			.loyalty_page_hero_title_description {
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-weight: 400 !important;
+				font-size: 14px;
+				line-height: 16px;
+				color: var(--greyDarkColor);
+			}
+
+			/* ----- slider -------- */
+			.loyalty_page_level {
+				width: 100%;
+				height: 382px;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_level {
+					height: 390px;
+				}
+			}
+			.loyalty_page_level_slider_wrap {
+				width: 100%;
+				margin-bottom: 12px;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_level_slider_wrap {
+					margin-bottom: 16px;
+				}
+			}
+
+			.loyalty_page_level_button_wrap {
+				width: 100%;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_level_button_wrap {
+					width: 100%;
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+					justify-content: center;
+				}
+			}
+			.loyalty_page_level_button {
+				width: 100%;
+				min-height: 40px;
+				border-radius: 8px;
+				background-color: var(--lilaColor);
+				color: var(--whiteColor) !important;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-weight: 400 !important;
+				font-size: 14px !important;
+				line-height: 16px;
+			}
+			.loyalty_page_level_button:hover {
+				background-color: var(--darkLilaColor);
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_level_button {
+					max-width: 156px;
+				}
+			}
+			/* -------- benefits --------- */
+			.loyalty_page_benefits {
+				width: 100%;
+			}
+
+			.loyalty_page_benefits_title {
+				display: inline-flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				gap: 8px;
+				margin: 0 0 12px 0;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_title {
+					margin: 0 0 16px 0;
+				}
+			}
+			.loyalty_page_benefits_title_text {
+				display: inline-flex;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 16px;
+				line-height: 100%;
+				font-weight: 500 !important;
+				color: var(--greyDarkColor) !important;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_title_text {
+					font-size: 20px;
+					line-height: 24px;
+				}
+			}
+			.loyalty_page_benefits_list {
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: repeat(3, 1fr);
+				grid-row-gap: 8px;
+				margin-bottom: 12px;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_list {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					grid-template-rows: repeat(2, 1fr);
+					grid-column-gap: 8px;
+					grid-row-gap: 8px;
+					margin-bottom: 16px;
+				}
+				.item-1 {
+					grid-area: 1 / 1 / 2 / 2;
+				}
+				.item-2 {
+					grid-area: 2 / 1 / 3 / 2;
+				}
+				.item-3 {
+					grid-area: 1 / 2 / 3 / 3;
+				}
+			}
+			.loyalty_page_benefits_item {
+				width: 100%;
+				height: 260px;
+				padding: 8px;
+				border-radius: 16px;
+				background-color: var(--greyLightColor) !important;
+			}
+			.item-3 {
+				height: 276px;
+			}
+			@media screen and (min-width: 960px) {
+				.item-1 {
+					height: 276px;
+				}
+				.item-2 {
+					height: 276px;
+				}
+				.item-3 {
+					height: 560px;
+				}
+			}
+			.loyalty_page_benefits_item_img_wrap {
+				width: 100%;
+				height: 160px;
+				border-radius: 12px;
+				margin-bottom: 8px;
+			}
+			@media screen and (min-width: 960px) {
+				.item-1 .loyalty_page_benefits_item_img_wrap {
+					height: 192px;
+				}
+				.item-2 .loyalty_page_benefits_item_img_wrap {
+					height: 176px;
+				}
+				.item-3 .loyalty_page_benefits_item_img_wrap {
+					height: 460px;
+				}
+			}
+			.loyalty_page_benefits_item_img {
+				width: 100%;
+				height: 100%;
+				border-radius: 12px;
+				object-fit: cover;
+			}
+			.loyalty_page_benefits_item_img_desk {
+				display: none;
+				width: 100%;
+				height: 100%;
+				border-radius: 12px;
+				object-fit: cover;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_item_img_mob {
+					display: none;
+				}
+				.loyalty_page_benefits_item_img_desk {
+					display: block;
+				}
+			}
+			.loyalty_page_benefits_item_text_wrap {
+				padding: 8px;
+			}
+			.loyalty_page_benefits_item_title {
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 20px !important;
+				font-style: normal;
+				line-height: 24px !important;
+				font-weight: 500 !important;
+				color: var(--greyDarkColor) !important;
+				margin: 0 0 4px 0 !important;
+			}
+			.loyalty_page_benefits_item_text {
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 14px !important;
+				line-height: 16px !important;
+				font-weight: 400 !important;
+				color: var(--greyDarkColor) !important;
+				padding-right: 30px;
+				margin: 0 !important;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_item_text {
+					padding-right: 0;
+				}
+			}
+			.loyalty_page_benefits_button_wrap {
+				width: 100%;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_button_wrap {
+					width: 100%;
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+					justify-content: center;
+				}
+			}
+			.loyalty_page_benefits_button {
+				width: 100%;
+				min-height: 40px;
+				border-radius: 8px;
+				background-color: var(--lilaColor);
+				color: var(--whiteColor) !important;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-weight: 400 !important;
+				font-size: 14px !important;
+				line-height: 16px;
+			}
+			.loyalty_page_benefits_button:hover {
+				background-color: var(--darkLilaColor);
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_benefits_button {
+					max-width: 156px;
+				}
+			}
+
+			/* ----- quastions ------ */
+			.loyalty_page_question {
+				width: 100%;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_question {
+					padding: 0 16px 0 16px;
+				}
+			}
+			.loyalty_page_question_title {
+				display: inline-flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				gap: 8px;
+				margin: 0 0 12px 0;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_question_title {
+					margin: 0 0 16px 0;
+				}
+			}
+			.loyalty_page_question_title_text {
+				display: inline-flex;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 16px;
+				line-height: 100%;
+				font-weight: 500 !important;
+				color: var(--greyDarkColor) !important;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_question_title_text {
+					font-size: 20px;
+					line-height: 24px;
+				}
+			}
+			.loyalty_page_question_list {
+				background-color: var(--greyLightColor) !important;
+				border-radius: 12px;
+			}
+
+			.loyalty_page_question_list_item {
+				background: #f9f9fb !important;
+				/* padding: 0 16px 0 0; */
+				overflow: hidden;
+				transition: color 0.25s ease;
+			}
+			.faq-item-1 {
+				border-top-left-radius: 12px;
+				border-top-right-radius: 12px;
+				border-bottom: 1px solid #dbe1e7 !important;
+			}
+			.faq-item-2 {
+				border-bottom: 1px solid #dbe1e7 !important;
+			}
+			.faq-item-3 {
+				border-bottom: 1px solid #dbe1e7 !important;
+			}
+			.faq-item-4 {
+				border-bottom: 1px solid #dbe1e7 !important;
+			}
+			.faq-item-5 {
+				border-bottom-left-radius: 12px;
+				border-bottom-right-radius: 12px;
+				border-top: 1px solid #dbe1e7 !important;
+			}
+
+			.loyalty_page_question_list_item summary {
+				cursor: pointer;
+				font-size: 14px;
+				line-height: 16px;
+				padding: 8px;
+				font-weight: 500;
+				list-style: none;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				color: var(--greyDarkColor) !important;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_question_list_item summary {
+					font-size: 16px;
+					padding: 16px;
+				}
+			}
+			.loyalty_page_question_list_item[open] summary {
+				color: #7b3fff !important;
+				padding-left: 16px;
+			}
+			.loyalty_page_question_list_item_text {
+				gap: 32px;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_question_list_item_text {
+					gap: 8px;
+				}
+			}
+			/* Прибираємо стандартний трикутник */
+			.loyalty_page_question_list_item summary::-webkit-details-marker {
+				display: none;
+			}
+
+			/* Стрілочка */
+			.loyalty_page_question_list_item summary::after {
+				content: "";
+				width: 20px;
+				height: 20px;
+				background: url("./images/arrows_close.png") center/contain no-repeat;
+				transition: transform 0.25s ease;
+			}
+
+			.loyalty_page_question_list_item[open] summary::after {
+				background-image: url("./images/arrows_open.png");
+			}
+
+			.loyalty_page_question_list_item_content {
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-weight: 400;
+				font-size: 12px;
+				line-height: 16px;
+				color: var(--greyColor) !important;
+				border-top: 1px solid #dbe1e7 !important;
+				padding: 16px;
+				animation: fade 0.3s ease;
+			}
+
+			@keyframes fade {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="loyalty_page_wrapper">
+			<div class="loyalty_page_container">
+				<main class="loyalty_page_main">
+					<section class="loyalty_page_hero">
+						<h2 class="loyalty_page_hero_title">
+							<span
+								><img
+									src="./images/hero_icon.png"
+									alt="benefits"
+									width="24"
+									height="24" /></span
+							><span class="loyalty_page_hero_title_text"
+								>Novo Programa de Fidelidade</span
+							>
+						</h2>
+						<div class="loyalty_page_hero_title_description">
+							Temos o prazer de apresentar o nosso novo Programa de Fidelidade -
+							uma forma renovada de tornar a sua experiência ainda mais
+							recompensadora. Desfrute de mais valor, maior flexibilidade e
+							novas oportunidades para desbloquear benefícios exclusivos criados
+							especialmente para si.
+						</div>
+					</section>
+					<section class="loyalty_page_level">
+						<div>
+							<iframe
+								class="loyalty_page_level_slider_wrap"
+								src="./slider_pt.html"
+								frameborder="0"
+								width="100%"
+								height="334"
+							></iframe>
+						</div>
+						<div class="loyalty_page_level_button_wrap">
+							<a class="loyalty_page_level_button" href="/cashier/deposit"
+								>Suba de nível</a
+							>
+						</div>
+					</section>
+					<section class="loyalty_page_benefits">
+						<h2 class="loyalty_page_benefits_title">
+							<span
+								><img
+									src="./images/benefits_icon.png"
+									alt="benefits"
+									width="24"
+									height="24" /></span
+							><span class="loyalty_page_benefits_title_text">Benefícios</span>
+						</h2>
+						<div>
+							<ul class="loyalty_page_benefits_list">
+								<li class="loyalty_page_benefits_item item-1">
+									<div class="loyalty_page_benefits_item_img_wrap">
+										<img
+											class="loyalty_page_benefits_item_img"
+											src="./images/cashback.png"
+											alt="cashback"
+										/>
+									</div>
+									<div class="loyalty_page_benefits_item_text_wrap">
+										<div class="loyalty_page_benefits_item_title">
+											Cashback Diário
+										</div>
+										<div class="loyalty_page_benefits_item_text">
+											Get a portion of your losses back every single day.
+										</div>
+									</div>
+								</li>
+								<li class="loyalty_page_benefits_item item-2">
+									<div class="loyalty_page_benefits_item_img_wrap">
+										<img
+											class="loyalty_page_benefits_item_img"
+											src="./images/birthdaygift.png"
+											alt="birthdaygift"
+										/>
+									</div>
+									<div class="loyalty_page_benefits_item_text_wrap">
+										<div class="loyalty_page_benefits_item_title">
+											Presente de Aniversário
+										</div>
+										<div class="loyalty_page_benefits_item_text">
+											On your birthday, you'll receive a special reward based on
+											your level.
+										</div>
+									</div>
+								</li>
+								<li class="loyalty_page_benefits_item item-3">
+									<div class="loyalty_page_benefits_item_img_wrap">
+										<img
+											class="loyalty_page_benefits_item_img loyalty_page_benefits_item_img_mob"
+											src="./images/benefits_girl_mob.png"
+											alt="personalmanager"
+										/>
+										<img
+											class="loyalty_page_benefits_item_img_desk"
+											src="./images/benefits_girl.png"
+											alt="personalmanager"
+										/>
+									</div>
+									<div class="loyalty_page_benefits_item_text_wrap">
+										<div class="loyalty_page_benefits_item_title">
+											Gestor Pessoal
+										</div>
+										<p class="loyalty_page_benefits_item_text">
+											Each time you reach a new level, you'll receive a special
+											bonus as a reward for your progress.
+										</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="loyalty_page_benefits_button_wrap">
+							<a class="loyalty_page_benefits_button" href="/cashier/deposit"
+								>Experimente os nossos benefícios</a
+							>
+						</div>
+					</section>
+					<section class="loyalty_page_question">
+						<h2 class="loyalty_page_question_title">
+							<span
+								><img
+									src="./images/faqs_icon.png"
+									alt="faqs"
+									width="24"
+									height="24"
+							/></span>
+							<span class="loyalty_page_question_title_text">FAQs</span>
+						</h2>
+
+						<div class="loyalty_page_question_list">
+							<details class="loyalty_page_question_list_item faq-item-1">
+								<summary>O que é o Programa de Fidelidade?</summary>
+								<div class="loyalty_page_question_list_item_content">
+									O Programa de Fidelidade é um sistema de recompensas criado
+									para valorizar os jogadores que permanecem ativos. Ao realizar
+									apostas, ganha pontos que o ajudam a subir de nível e
+									desbloquear benefícios exclusivos.Níveis mais altos dão acesso
+									a bónus melhorados, cashback aumentado, promoções especiais e
+									outras recompensas premium criadas para elevar a sua
+									experiência de jogo.
+								</div>
+							</details>
+
+							<details class="loyalty_page_question_list_item faq-item-2">
+								<summary>Como aumentar o meu nível de fidelidade?</summary>
+								<div class="loyalty_page_question_list_item_content">
+									Quanto mais jogar no WEI$$.BET, mais depressa poderá subir de
+									nível e desbloquear todos os benefícios de topo. Fique
+									connosco e desfrute da melhor experiência de jogo!
+								</div>
+							</details>
+
+							<details class="loyalty_page_question_list_item faq-item-3">
+								<summary class="loyalty_page_question_list_item_text">
+									Quantas apostas preciso de fazer para ganhar 1 ponto?
+								</summary>
+								<div class="loyalty_page_question_list_item_content">
+									A quantidade de apostas necessárias depende do tipo de jogo e
+									da taxa de conversão atual. Os pontos são calculados pela
+									fórmula:<br />
+
+									Pontos = (Valor da Aposta × Wager da Aposta) / Conversão
+									Atual<br />
+
+									Onde:<br />
+
+									◦ Wager da Aposta - coeficiente que depende do tipo de
+									jogo.<br />
+									◦ Conversão Atual - taxa atual de 1 WEFT.<br />
+									Pode consultar todos os Wager da Aposta na secção Play to Earn
+									da página Analytics.<br />
+									Por exemplo, para ganhar 1 ponto nas Slots, precisa apostar
+									~15 USDT, nos Jogos ao Vivo ~150 USDT.<br />
+									Quanto mais pontos acumular, maior será o seu nível de
+									fidelidade.
+								</div>
+							</details>
+
+							<details class="loyalty_page_question_list_item faq-item-4">
+								<summary>O que é o Bónus de Subida de Nível?</summary>
+								<div class="loyalty_page_question_list_item_content">
+									Para celebrar o progresso dos nossos jogadores, oferecemos um
+									Bónus de Subida de Nível sempre que alcançam um novo nível.
+									Dependendo do nível, este bónus pode incluir free spins,
+									recompensas em dinheiro e muito mais. Quanto mais alto o
+									nível, melhor o bónus - cada marco desbloqueia recompensas
+									valiosas.
+								</div>
+							</details>
+
+							<details class="loyalty_page_question_list_item faq-item-5">
+								<summary>O que é o cashback diário?</summary>
+								<div class="loyalty_page_question_list_item_content">
+									O Cashback Diário é o reembolso parcial das suas perdas do dia
+									anterior – uma espécie de "seguro" que o ajuda a continuar a
+									jogar e tentar a sorte novamente. O valor depende da sua
+									atividade e nível de lealdade. Pode receber de 5% a 13% das
+									suas perdas regularmente.
+								</div>
+							</details>
+						</div>
+					</section>
+				</main>
+			</div>
+		</div>
+	</body>
+</html>

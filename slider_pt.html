@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			@font-face {
+				font-display: swap;
+				font-family: Stolzl;
+				font-style: normal;
+				font-weight: 400;
+				src: url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Regular.woff2)
+						format("woff2"),
+					url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Regular.woff)
+						format("woff");
+			}
+			@font-face {
+				font-display: swap;
+				font-family: Stolzl;
+				font-style: normal;
+				font-weight: 500;
+				src: url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Medium.woff2)
+						format("woff2"),
+					url(https://d36qhe25w9jqx.cloudfront.net/landing/fonts/Stolzl-Medium.woff)
+						format("woff");
+			}
+
+			.loyalty_page_level_title_wrapper {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				height: 32px;
+				margin: 0 0 12px 0;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_level_title_wrapper {
+					margin: 0 0 16px 0;
+				}
+			}
+			.loyalty_page_level_title {
+				display: inline-flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				gap: 8px;
+			}
+			.loyalty_page_level_icon-wrapper {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.loyalty_page_level_title img {
+				display: inline-flex;
+			}
+
+			.loyalty_page_level_title_text {
+				color: #34414d !important;
+				display: inline-flex;
+				font-family: Stolzl, Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+					Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif !important;
+				font-size: 16px;
+				line-height: 100%;
+				font-weight: 500 !important;
+			}
+			@media screen and (min-width: 960px) {
+				.loyalty_page_level_title_text {
+					font-size: 20px;
+					line-height: 24px;
+				}
+			}
+			.loyalty_page_level_arrows_wrap {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				gap: 8px;
+			}
+			.loyalty_page_level_arrows_wrap a {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				border-radius: 6px;
+				outline: none;
+			}
+
+			.loyalty_page_level_arrows_wrap a img {
+				cursor: pointer;
+			}
+			#arrow-left-img {
+				transform: rotate(180deg);
+			}
+			.loyalty_page_level_arrows_wrap img {
+				transition: opacity 0.2s ease;
+				opacity: 0.6;
+			}
+			.loyalty_page_level_arrows_wrap a.is-disabled img {
+				opacity: 0.32;
+				pointer-events: none;
+			}
+			.loyalty_page_level_arrows_wrap a:not(.is-disabled):hover img {
+				opacity: 1;
+			}
+			/* Контейнер */
+			.slider-container {
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+			}
+			/* Трек */
+			.slider {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 8px;
+
+				will-change: transform;
+				cursor: grab;
+				height: 286px;
+
+				touch-action: pan-y;
+			}
+			/* Картка */
+
+			.card {
+				flex: 0 0 248px;
+				height: 286px;
+				background: #ffffff;
+				border-radius: 16px;
+				overflow: hidden;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: center;
+				scroll-snap-align: none;
+			}
+			/* ховаємо скролл */
+			.slider::-webkit-scrollbar {
+				display: none;
+			}
+			#levels-slider {
+				touch-action: pan-y;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<section>
+				<div class="loyalty_page_level_title_wrapper">
+					<h2 class="loyalty_page_level_title">
+						<span class="loyalty_page_level_icon-wrapper"
+							><img
+								src="./images/level_icon.png"
+								alt="level icon"
+								width="24"
+								height="24" /></span
+						><span class="loyalty_page_level_title_text"
+							>Você pode alcançar 30 níveis</span
+						>
+					</h2>
+					<div class="loyalty_page_level_arrows_wrap">
+						<a href="#" id="arrow-left"
+							><img
+								src="./images/buttons_arrow_right.png"
+								alt="arrow-left"
+								id="arrow-left-img"
+								width="32"
+								height="32"
+						/></a>
+						<a href="#" id="arrow-right"
+							><img
+								src="./images/buttons_arrow_right.png"
+								alt="arrow-right"
+								id="arrow-right-img"
+								width="32"
+								height="32"
+						/></a>
+					</div>
+				</div>
+				<div class="slider-container">
+					<div class="slider" id="levels-slider">
+						<div id="slide1" class="card">
+							<img
+								src="./images/Cashback card - default.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide2" class="card">
+							<img
+								src="./images/Cashback card - default_2.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide3" class="card">
+							<img
+								src="./images/Cashback card - default_3.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide4" class="card">
+							<img
+								src="./images/Cashback card - default_4.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide5" class="card">
+							<img
+								src="./images/Cashback card - default_5.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide6" class="card">
+							<img
+								src="./images/Cashback card - default_6.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide7" class="card">
+							<img
+								src="./images/Cashback card - default_7.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide8" class="card">
+							<img
+								src="./images/Cashback card - default_8.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide9" class="card">
+							<img
+								src="./images/Cashback card - default_9.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide10" class="card">
+							<img
+								src="./images/Cashback card - default_10.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide11" class="card">
+							<img
+								src="./images/Cashback card - default_11.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide12" class="card">
+							<img
+								src="./images/Cashback card - default_12.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide13" class="card">
+							<img
+								src="./images/Cashback card - default_13.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide14" class="card">
+							<img
+								src="./images/Cashback card - default_14.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide15" class="card">
+							<img
+								src="./images/Cashback card - default_15.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide16" class="card">
+							<img
+								src="./images/Cashback card - default_16.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide17" class="card">
+							<img
+								src="./images/Cashback card - default_17.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide18" class="card">
+							<img
+								src="./images/Cashback card - default_18.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide19" class="card">
+							<img
+								src="./images/Cashback card - default_19.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide20" class="card">
+							<img
+								src="./images/Cashback card - default_20.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide21" class="card">
+							<img
+								src="./images/Cashback card - default_21.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide22" class="card">
+							<img
+								src="./images/Cashback card - default_22.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide23" class="card">
+							<img
+								src="./images/Cashback card - default_23.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide24" class="card">
+							<img
+								src="./images/Cashback card - default_24.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide25" class="card">
+							<img
+								src="./images/Cashback card - default_25.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide26" class="card">
+							<img
+								src="./images/Cashback card - default_26.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide27" class="card">
+							<img
+								src="./images/Cashback card - default_27.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide28" class="card">
+							<img
+								src="./images/Cashback card - default_28.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide29" class="card">
+							<img
+								src="./images/Cashback card - default_29.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+						<div id="slide30" class="card">
+							<img
+								src="./images/Cashback card - default_30.png"
+								alt="card"
+								width="248"
+								height="286"
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const track = document.getElementById("levels-slider");
+				const slides = Array.from(track.children);
+
+				const btnLeft = document.getElementById("arrow-left");
+				const btnRight = document.getElementById("arrow-right");
+				const leftImg = document.getElementById("arrow-left-img");
+				const rightImg = document.getElementById("arrow-right-img");
+
+				const HOLD_DELAY = 300;
+				const FAST_STEP = 3;
+				const FAST_INTERVAL = 80;
+				let holdTimeout = null;
+				let holdInterval = null;
+
+				let position = 0;
+				let cardWidth = slides[0].offsetWidth + 8;
+				let maxShift;
+				let startTime = 0;
+				let velocity = 0;
+
+				function recalc() {
+					cardWidth = slides[0].offsetWidth + 8;
+					maxShift = -(track.scrollWidth - track.parentElement.clientWidth);
+
+					// Центрування картки №1 на початку (0-based)
+					const containerWidth = track.parentElement.clientWidth;
+					const targetIndex = 0;
+					position =
+						-(targetIndex * cardWidth) + (containerWidth / 2 - cardWidth / 2);
+
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
+
+					track.style.transform = `translateX(${position}px)`;
+					updateArrowsOpacity();
+				}
+
+				window.addEventListener("resize", recalc);
+				recalc();
+
+				function updateArrowsOpacity() {
+					// ліва стрілка
+					if (position >= 0) {
+						btnLeft.classList.add("is-disabled");
+					} else {
+						btnLeft.classList.remove("is-disabled");
+					}
+
+					// права стрілка
+					if (position <= maxShift) {
+						btnRight.classList.add("is-disabled");
+					} else {
+						btnRight.classList.remove("is-disabled");
+					}
+				}
+
+				// --- КНОПКИ ---
+				btnRight.addEventListener("click", (e) => {
+					e.preventDefault();
+					moveSlide(-1);
+				});
+
+				btnLeft.addEventListener("click", (e) => {
+					e.preventDefault();
+					moveSlide(1);
+				});
+
+				function moveSlide(direction) {
+					position += direction * cardWidth;
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
+
+					track.style.transition =
+						"transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1)";
+					track.style.transform = `translateX(${position}px)`;
+					updateArrowsOpacity();
+				}
+
+				// --- DRAG / SWIPE ---
+				let startX = 0;
+				let dragging = false;
+				let startPos = 0;
+
+				function dragStart(e) {
+					dragging = true;
+					track.style.transition = "none";
+					startX = e.pageX || e.touches[0].pageX;
+					startPos = position;
+					startTime = Date.now();
+					velocity = 0;
+				}
+
+				function dragMove(e) {
+					if (!dragging) return;
+
+					e.preventDefault();
+
+					const x = e.touches ? e.touches[0].pageX : e.pageX;
+
+					const delta = x - startX;
+					position = startPos + delta;
+
+					const elapsed = Date.now() - startTime;
+					if (elapsed > 0) {
+						velocity = delta / elapsed; // px/ms
+
+						// clamp для iOS
+						velocity = Math.max(-3, Math.min(3, velocity));
+					}
+
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
+
+					track.style.transform = `translateX(${position}px)`;
+				}
+
+				function dragEnd() {
+					if (!dragging) return;
+					dragging = false;
+
+					const containerWidth = track.parentElement.clientWidth;
+					const centerOffset = containerWidth / 2 - cardWidth / 2;
+
+					/* let index = Math.max(0, Math.min(slides.length - 1, index)); */
+					let index = Math.round((-position + centerOffset) / cardWidth);
+
+					// 🚀 FAST SWIPE
+					const speed = Math.abs(velocity);
+					if (speed > 0.5) {
+						const boost = Math.min(4, Math.ceil(speed * 2));
+						if (velocity < 0) index += boost;
+						else index -= boost;
+					}
+
+					position = -(index * cardWidth) + centerOffset;
+
+					if (position > 0) position = 0;
+					if (position < maxShift) position = maxShift;
+
+					track.style.transition =
+						"transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1)";
+					track.style.transform = `translateX(${position}px)`;
+
+					updateArrowsOpacity();
+				}
+
+				//  прокрутка на кнопці //
+				function startHold(direction) {
+					holdTimeout = setTimeout(() => {
+						holdInterval = setInterval(() => {
+							position += direction * cardWidth * FAST_STEP;
+
+							if (position > 0) position = 0;
+							if (position < maxShift) position = maxShift;
+
+							track.style.transition = "none";
+							track.style.transform = `translateX(${position}px)`;
+							updateArrowsOpacity();
+						}, FAST_INTERVAL);
+					}, HOLD_DELAY);
+				}
+
+				function stopHold() {
+					clearTimeout(holdTimeout);
+					clearInterval(holdInterval);
+					holdTimeout = null;
+					holdInterval = null;
+
+					// легкий snap після швидкої прокрутки
+					track.style.transition =
+						"transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1)";
+				}
+				btnRight.addEventListener("mousedown", () => startHold(-1));
+				btnRight.addEventListener("touchstart", () => startHold(-1), {
+					passive: true,
+				});
+
+				btnRight.addEventListener("mouseup", stopHold);
+				btnRight.addEventListener("mouseleave", stopHold);
+				btnRight.addEventListener("touchend", stopHold);
+				btnRight.addEventListener("touchcancel", stopHold);
+				btnLeft.addEventListener("mousedown", () => startHold(1));
+				btnLeft.addEventListener("touchstart", () => startHold(1), {
+					passive: true,
+				});
+
+				btnLeft.addEventListener("mouseup", stopHold);
+				btnLeft.addEventListener("mouseleave", stopHold);
+				btnLeft.addEventListener("touchend", stopHold);
+				btnLeft.addEventListener("touchcancel", stopHold);
+
+				track.addEventListener("touchstart", dragStart, { passive: true });
+				track.addEventListener("touchmove", dragMove, { passive: false });
+				track.addEventListener("touchend", dragEnd);
+				track.addEventListener("touchcancel", dragEnd);
+			});
+		</script>
+	</body>
+</html>
